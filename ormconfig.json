@@ -1,0 +1,22 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "1739",
+    "database": "mestres_da_web",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+       "src/database/entity/*.ts"
+    ],
+    "migrations": [
+       "src/database/migrations/*.ts"
+    ],
+    "subscribers": [
+       "src/database/subscriber/.ts"
+    ],
+     "cli": {
+         "migrationsDir": "src/database/migrations"
+     }
+ }
