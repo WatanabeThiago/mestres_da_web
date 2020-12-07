@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
+
+import Shop from './Shop'
 
 @Entity('products')
 export default class Product {
@@ -22,6 +24,12 @@ export default class Product {
 
     @Column()
     product_quantity_g: number;
+
+    @Column()
+    shop_id: string;
     
+    @ManyToOne(() => Shop)
+    @JoinColumn({ name: 'shop_id'})
+    shop: Shop
 
 }

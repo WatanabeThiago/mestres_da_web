@@ -20,6 +20,7 @@ export class createShopTable1607371431808 implements MigrationInterface {
                 {
                     name: 'shop_email',
                     type: 'varchar',
+                    isUnique: true
                 },
                 {
                     name: 'shop_password',
