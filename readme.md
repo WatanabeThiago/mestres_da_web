@@ -1,4 +1,5 @@
-#Desafio Mestres da Web
+# Desafio Mestres da Web
+<img src='./assets/readme.png'>
 
 # 📦 Requisitos
 1. Docker (https://docs.docker.com/docker-for-windows/install/)
@@ -15,11 +16,12 @@ Após baixar o projeto e criar o banco de dados, rode o comando 'npm install' ou
 Para iniciliazar o projeto, rode 'yarn dev'.
 
 Se tudo acontecer como o esperado, voce irá ver esse log:
-<img src='./assets/readme.png'>
+<img src='./assets/print.png'>
+
 
 
 # 💭 Sobre o projeto
-<img src='./assets/print.png'>
+
 
 O projeto conta com duas tabelas: 'shops' (lojas) e 'products' (produtos), sendo um relacionamento de UMA loja para MUITOS produtos (OneToMany).
 
