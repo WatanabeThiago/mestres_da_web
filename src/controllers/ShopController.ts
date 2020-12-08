@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { getRepository, getConnection } from 'typeorm'
+import { hash } from 'bcryptjs'
 
 import Shop from '../database/entity/Shop'
 
@@ -12,9 +13,7 @@ class UserController {
         try {
             const ShopRepo = getRepository(Shop)
 
-            const { shop_email } = req.body;
-
-            console.log(req.body)
+            const { shop_email, shop_password, shop_name } = req.body;
 
             const shopExists = await ShopRepo.findOne({ where: { shop_email } })
 
@@ -22,10 +21,16 @@ class UserController {
                 throw new Error('Usuario já existe.')
             }
 
+            const hashedPassword = await hash(shop_password, 8)
+
             const shop = ShopRepo.create({
-                ...req.body
+                shop_email,
+                shop_password: hashedPassword,
+                shop_name
             })
             await ShopRepo.save(shop)
+
+            delete shop.shop_password
 
             return res.json(shop)
         }
@@ -37,7 +42,7 @@ class UserController {
         try {
             const ShopRepo = getRepository(Shop)
 
-            const shop_id = req.headers.authorization
+            const shop_id = req.shop.shop_id
 
             const shopExists = await ShopRepo.findOne({ where: { shop_id } })
             if (!shopExists) {
@@ -59,7 +64,7 @@ class UserController {
     }
 
     async update(req: Request, res: Response) {
-        const shop_id = req.params
+        const shop_id = req.shop.shop_id
 
         const shop = { ...req.body }
 

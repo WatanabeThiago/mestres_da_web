@@ -4,21 +4,25 @@ import { getRepository, getConnection } from 'typeorm'
 import Product from '../database/entity/Product'
 
 class UserController {
-    async listProductsShops(req: Request, res: Response){
-        const shop_id = req.params
-        return res.json(await getRepository(Product).find({where: {shop_id}}))
+    async listProductsShops(req: Request, res: Response) {
+        const shop_id = req.shop.shop_id
+        return res.json(await getRepository(Product).find({ where: { shop_id } }))
     }
-    async list(req: Request, res: Response) {
+    async listAll(req: Request, res: Response) {
         return res.json(await getRepository(Product).find())
+    }
+    async listCategory(req: Request, res: Response) {
+        const product_category = req.query.category
+        return res.json(await getRepository(Product).find({ where: { product_category } }))
     }
 
     async create(req: Request, res: Response) {
         try {
             const ProductRepo = getRepository(Product)
+            console.log(req.shop)
 
-            const shop_id = req.headers.authorization
+            const shop_id = req.shop.shop_id
 
-        
             const product = ProductRepo.create({
                 ...req.body,
                 shop_id
@@ -36,12 +40,18 @@ class UserController {
             const ProductRepo = getRepository(Product)
 
             const product_id = req.params
+            console.log(product_id)
 
-            const user_id = req.headers.authorization
+            const shop_id = req.shop.shop_id
+            console.log(shop_id)
 
-            const productExists = await ProductRepo.findOne({ where: { product_id } })
 
-            if (!productExists) {
+            const product = await ProductRepo.findOne({ where: product_id })
+
+            if (shop_id == product?.shop_id)
+                console.log('IGUAL')
+
+            if (!product) {
                 return res.sendStatus(404)
             }
 
@@ -50,7 +60,7 @@ class UserController {
                 .createQueryBuilder()
                 .delete()
                 .from(Product)
-                .where({ product_id })
+                .where(product_id)
                 .execute()
 
             return res.send('Produto deletado com sucesso')
@@ -61,19 +71,30 @@ class UserController {
     }
 
     async update(req: Request, res: Response) {
-        const shop_id = req.headers.authorization;
+        const ProductRepo = getRepository(Product)
+        const shop_id = req.shop.shop_id
         const product_id = req.params;
 
-        const shop = { ...req.body }
+        const product = await ProductRepo.findOne({ where: product_id })
+
+        if (shop_id == product?.shop_id)
+            console.log('IGUAL')
+
+        if (!product) {
+            return res.sendStatus(404)
+        }
+
+        const product_data = { ...req.body }
 
         try {
-            const shop_update = await getRepository(Product).update(
+            const product_update = await getRepository(Product).update(
                 product_id,
-                shop
+                product_data
             )
             return res.status(200).json({
                 message: "Update com sucesso",
-                data: shop_update,
+                data: product_data
+
             });
         }
         catch (error) {

@@ -1,4 +1,5 @@
-import { PrimaryGeneratedColumn, Entity, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { PrimaryGeneratedColumn, Entity, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert, BeforeUpdate } from 'typeorm'
+import bcrypt from 'bcryptjs'
 
 @Entity('shops')
 export default class Shop {
@@ -19,4 +20,6 @@ export default class Shop {
 
     @UpdateDateColumn()
     updated_at: Date;
+
+    
 }

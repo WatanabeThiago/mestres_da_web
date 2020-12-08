@@ -3,15 +3,25 @@ const routes = Router()
 
 import ShopController from './controllers/ShopController'
 import ProductController from './controllers/ProductController'
+import SessionController from  './controllers/SessionController'
+
+import ensureAuthenticared from './middlewares/ensureAuthenticated'
 
 routes.get('/shops', ShopController.list)
-routes.delete('/shops', ShopController.delete)
+routes.delete('/shops', ensureAuthenticared, ShopController.delete)
 routes.post('/shops', ShopController.create)
-routes.put('/shops/:shop_id', ShopController.update)
+routes.put('/shops/:shop_id', ensureAuthenticared, ShopController.update)
 
-routes.post('/products', ProductController.create)
-routes.get('/products', ProductController.list)
-routes.get('/products/:shop_id', ProductController.listProductsShops)
-routes.put('/products/:product_id', ProductController.update)
+
+routes.get('/shops/products', ensureAuthenticared, ProductController.listProductsShops) //ok
+routes.get('/products', ProductController.listAll)
+routes.get('/products/category',  ProductController.listCategory)
+
+routes.post('/products', ensureAuthenticared, ProductController.create)
+routes.put('/products/:product_id', ensureAuthenticared, ProductController.update)
+routes.delete('/products/:product_id', ensureAuthenticared, ProductController.delete)
+//CADE O DELETE
+
+routes.post('/login', SessionController.login)
 
 export default routes;
