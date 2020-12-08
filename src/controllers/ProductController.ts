@@ -8,12 +8,11 @@ class UserController {
         const shop_id = req.shop.shop_id
         return res.json(await getRepository(Product).find({ where: { shop_id } }))
     }
-    async listAll(req: Request, res: Response) {
-        return res.json(await getRepository(Product).find())
-    }
+
     async listCategory(req: Request, res: Response) {
         const product_category = req.query.category
-        return res.json(await getRepository(Product).find({ where: { product_category } }))
+        const shop_id = req.shop.shop_id
+        return res.json(await getRepository(Product).find({ where: { shop_id } && { product_category }}))
     }
 
     async create(req: Request, res: Response) {

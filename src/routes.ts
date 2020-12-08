@@ -13,8 +13,7 @@ routes.post('/shops', ShopController.create)
 routes.put('/shops/:shop_id', ensureAuthenticared, ShopController.update)
 
 
-routes.get('/shops/products', ensureAuthenticared, ProductController.listProductsShops) //ok
-routes.get('/products', ProductController.listAll)
+routes.get('/shops/products', ensureAuthenticared, ProductController.listProductsShops) 
 routes.get('/products/category',  ProductController.listCategory)
 
 routes.post('/products', ensureAuthenticared, ProductController.create)
