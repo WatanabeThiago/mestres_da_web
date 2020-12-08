@@ -1,9 +1,12 @@
 import { Request, Response } from 'express'
 import { getRepository, getConnection } from 'typeorm'
 import { hash } from 'bcryptjs'
+import multer from 'multer'
+import uploadConfig from '../config/upload'
 
 import Shop from '../database/entity/Shop'
 
+const upload = multer(uploadConfig)
 class UserController {
     async list(req: Request, res: Response) {
         return res.json(await getRepository(Shop).find())
@@ -85,7 +88,11 @@ class UserController {
             })
         }
     }
-
+    
+    async photo_upload(req: Request, res: Response) {
+        console.log(req.file)
+        return res.json({ ok: true})
+    }
 }
 
 export default new UserController()
