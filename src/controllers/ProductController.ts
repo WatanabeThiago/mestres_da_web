@@ -45,16 +45,16 @@ class UserController {
             const shop_id = req.shop.shop_id
             console.log(shop_id)
 
-
             const product = await ProductRepo.findOne({ where: product_id })
 
             if (shop_id == product?.shop_id)
                 console.log('IGUAL')
+                else {
+                    return res.status(401).json('unauthorized')
+                }
 
-            if (!product) {
+            if (!product) 
                 return res.sendStatus(404)
-            }
-
 
             await getConnection()
                 .createQueryBuilder()
