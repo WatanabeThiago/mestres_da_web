@@ -66,8 +66,6 @@ class UserController {
 
         const shop = { ...req.body }
 
-        
-
         try {
             const shop_update = await getRepository(Product).update(
                 product_id,

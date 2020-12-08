@@ -12,6 +12,6 @@ routes.put('/shops/:shop_id', ShopController.update)
 routes.post('/products', ProductController.create)
 routes.get('/products', ProductController.list)
 routes.get('/products/:shop_id', ProductController.listProductsShops)
-routes.put('/products', ProductController.update)
+routes.put('/products/:product_id', ProductController.update)
 
 export default routes;

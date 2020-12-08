@@ -41,6 +41,26 @@ export class createProductsTable1607374112004 implements MigrationInterface {
                     default: 0
                 },
                 {
+                    name: 'product_quantity_39',
+                    type: 'integer',
+                    default: 0
+                },
+                {
+                    name: 'product_quantity_40',
+                    type: 'integer',
+                    default: 0
+                },
+                {
+                    name: 'product_quantity_41',
+                    type: 'integer',
+                    default: 0
+                },
+                {
+                    name: 'product_quantity_42',
+                    type: 'integer',
+                    default: 0
+                },
+                {
                     name: 'created_at',
                     type: 'timestamp',
                     default: 'now()'
