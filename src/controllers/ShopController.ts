@@ -46,6 +46,7 @@ class UserController {
             const ShopRepo = getRepository(Shop)
 
             const shop_id = req.shop.shop_id
+            console.log(shop_id)
 
             const shopExists = await ShopRepo.findOne({ where: { shop_id } })
             if (!shopExists) {
@@ -88,11 +89,7 @@ class UserController {
             })
         }
     }
-    
-    async photo_upload(req: Request, res: Response) {
-        console.log(req.file)
-        return res.json({ ok: true})
-    }
+
 }
 
 export default new UserController()

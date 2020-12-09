@@ -1,13 +1,18 @@
 import multer from 'multer';
-import { join } from 'path';
+import path from 'path';
+
+const uploadFolder = path.resolve(__dirname, '..', '..', 'uploads')
 
 export default {
-  storage: multer.diskStorage({
-    destination: join(__dirname, '..', '..', 'uploads'),
-    filename: (request, file, cb) => {
-      const fileName = `${Date.now()}-${file.originalname.trim()}`;
+  directory: uploadFolder,
 
-      return cb(null, fileName);
-    },
-  }),
+  storage: multer.diskStorage({
+        destination: uploadFolder,
+        
+        filename: (request, file, cb) => {
+            const fileName = `${Date.now()}-${file.originalname.trim()}`;
+
+            return cb(null, fileName);
+        },
+    }),
 }

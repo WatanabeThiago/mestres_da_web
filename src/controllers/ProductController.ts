@@ -3,6 +3,7 @@ import { getRepository, getConnection } from 'typeorm'
 
 import Product from '../database/entity/Product'
 
+
 class UserController {
     async listProductsShops(req: Request, res: Response) {
         const shop_id = req.shop.shop_id
@@ -18,8 +19,6 @@ class UserController {
     async create(req: Request, res: Response) {
         try {
             const ProductRepo = getRepository(Product)
-            console.log(req.shop)
-
             const shop_id = req.shop.shop_id
 
             const product = ProductRepo.create({
@@ -37,13 +36,9 @@ class UserController {
     async delete(req: Request, res: Response) {
         try {
             const ProductRepo = getRepository(Product)
-
             const product_id = req.params
-            console.log(product_id)
-
             const shop_id = req.shop.shop_id
-            console.log(shop_id)
-
+    
             const product = await ProductRepo.findOne({ where: product_id })
 
             if (shop_id == product?.shop_id)

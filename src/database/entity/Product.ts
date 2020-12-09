@@ -37,6 +37,9 @@ export default class Product {
     @Column({ default: 0 })
     product_quantity_42: number;
 
+    @Column({default: 'blank.jpg'})
+    product_photo: string;
+
     @Column()
     shop_id: string;
     

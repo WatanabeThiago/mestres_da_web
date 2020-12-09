@@ -15,6 +15,9 @@ export default class Shop {
     @Column()
     shop_password: string;
 
+    @Column({ default: 'blank.jpg'})
+    photo: string;
+
     @CreateDateColumn()
     created_at: Date;
 
