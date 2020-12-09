@@ -19,7 +19,6 @@ Para iniciliazar o projeto, rode 'yarn dev'.
 Se tudo acontecer como o esperado, voce irá ver esse log:
 <img src='./assets/print.png'>
 
-
 # 💭 Sobre o projeto
 
 O projeto conta com duas tabelas: 'shops' (lojas) e 'products' (produtos), sendo um relacionamento de UMA loja para MUITOS produtos (OneToMany).
@@ -48,4 +47,4 @@ Na raíz do projeto, existe um arquivo insomnia.json, que possui um workspace j�
 Foi utilizado PostgreSQL na aplicação com DBeaver.
 
 # ℹ Minha dificuldade
-Essa foi a tabela que eu senti duvida, pois nao sabia como lidar com as SKRUs, fiquei me questionando se colocava as quantidades em uma tabela separada, ou de que forma eu resolveria esse problema. Cheguei a conclusão de que seria melhor colococar todas as colunas de quantidades na mesma tabela e definir o valor padrão de todas as colunas relacionadas a quantidade como ZERO (0).
+A tabela de produtos foi a tabela que eu senti duvida, pois nao sabia como lidar com as SKRUs, fiquei me questionando se colocava as quantidades em uma tabela separada, ou de que forma eu resolveria esse problema. Cheguei a conclusão de que seria melhor colococar todas as colunas de quantidades na mesma tabela e definir o valor padrão de todas as colunas relacionadas a quantidade como ZERO (0).
