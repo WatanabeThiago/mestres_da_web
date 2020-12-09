@@ -26,7 +26,7 @@ O projeto conta com duas tabelas: 'shops' (lojas) e 'products' (produtos), sendo
 O projeto conta tambem com CRUDS para ambas as tabelas.
 
 # 🎟 JWT
-Todas as rotas com excessão de 'listar todos os produtos', 'login' e 'criar shop' PRECISAM de um token JWT que é gerado na rota Login, pois é no token que se localiza a coluna 'shop_id'.
+Todas as rotas com excessão de 'login' e 'criar shop' PRECISAM de um token JWT que é gerado na rota Login, pois é no token que se localiza a coluna 'shop_id'.
 
 # 🚷 Middleware de autenticação
 O middleware de autenticação recebe o token JWT através do req.headers.authorization e retorna apenas o campo 'sub' do token, sendo ele o id do shop. Caso o token seja inválido, o usuario nao consegue acessar as rotas autenticadas.
