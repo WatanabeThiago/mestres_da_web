@@ -28,6 +28,9 @@ O projeto conta tambem com CRUDS para ambas as tabelas.
 # 🎟 JWT
 Todas as rotas com excessão de 'listar todos os produtos', 'login' e 'criar shop' PRECISAM de um token JWT que é gerado na rota Login, pois é no token que se localiza a coluna 'shop_id'.
 
+# 🚷 Middleware de autenticação
+O middleware de autenticação recebe o token JWT através do req.headers.authorization e retorna apenas o campo 'sub' do token, sendo ele o id do shop. Caso o token seja inválido, o usuario nao consegue acessar as rotas autenticadas.
+
 # 🖼 Sistema de Imagens
 Cada tabela possui um sistema de imagem e um arquivo controlador para cada.
 O sistema de imagem funciona da seguinte maneira:
@@ -37,14 +40,12 @@ Para atualizar essa foto, é chamada a rota '/products/photo/:product_id' (para 
 
 Para nao sobrecarregar o armazenamento,  toda vez que um shop/produto atualiza a sua foto, a foto anterior é excluida (com excessão da 'blank.jpg')
 
-# 🚷 Middleware de autenticação
-O middleware de autenticação recebe o token JWT através do req.headers.authorization e retorna apenas o campo 'sub' do token, sendo ele o id do shop. Caso o token seja inválido, o usuario nao consegue acessar as rotas autenticadas.
+# 🎲 Banco de Dados
+Foi utilizado PostgreSQL na aplicação com DBeaver.
 
 # 🟣 Teste com o Insomnia  
 Na raíz do projeto, existe um arquivo insomnia.json, que possui um workspace já configurado para testes no Insomnia.
 
-# 🎲 Banco de Dados
-Foi utilizado PostgreSQL na aplicação com DBeaver.
 
 # ℹ Minha dificuldade
 A tabela de produtos foi a tabela que eu senti duvida, pois nao sabia como lidar com as SKRUs, fiquei me questionando se colocava as quantidades em uma tabela separada, ou de que forma eu resolveria esse problema. Cheguei a conclusão de que seria melhor colococar todas as colunas de quantidades na mesma tabela e definir o valor padrão de todas as colunas relacionadas a quantidade como ZERO (0).
