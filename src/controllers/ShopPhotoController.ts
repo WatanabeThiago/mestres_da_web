@@ -6,7 +6,7 @@ import fs from 'fs'
 
 import Shop from '../database/entity/Shop'
 
-const uploadFolder = path.resolve(__dirname, '..', '..', 'uploads')
+const uploadFolder = path.resolve(__dirname, '..', '..', 'images')
 
 class PhotoController {
     async photo_update(req: Request, res: Response) {
