@@ -31,6 +31,9 @@ Todas as rotas com excessão de 'login' e 'criar shop' PRECISAM de um token JWT 
 # 🚷 Middleware de autenticação
 O middleware de autenticação recebe o token JWT através do req.headers.authorization e retorna apenas o campo 'sub' do token, sendo ele o id do shop. Caso o token seja inválido, o usuario nao consegue acessar as rotas autenticadas.
 
+# 🚫 Usuarios nao podem alterar ou deletar produtos de outros usuarios
+Os controladores da tabela 'products' possuem verificação para validar se o Token JWT enviado pelo usuario contem o id do usuario que criou o registro no banco de dados.
+
 # 🖼 Sistema de Imagens
 Cada tabela possui um sistema de imagem e um arquivo controlador para cada.
 O sistema de imagem funciona da seguinte maneira:
