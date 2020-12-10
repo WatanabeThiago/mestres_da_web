@@ -1,5 +1,5 @@
 # Desafio Mestres da Web
-<img src='./assets/readme.png'>
+<img src='./assets/relations.png'>
 
 # 📦 Requisitos
 1. Docker (https://docs.docker.com/docker-for-windows/install/)
@@ -17,7 +17,7 @@ Após baixar o projeto e criar o banco de dados, rode o comando 'npm install' ou
 Para iniciliazar o projeto, rode 'yarn dev'.
 
 Se tudo acontecer como o esperado, voce irá ver esse log:
-<img src='./assets/relations.png'>
+<img src='./assets/print.png'>
 
 # 💭 Sobre o projeto
 
