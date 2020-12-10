@@ -13,7 +13,7 @@ import uploadConfig from './config/upload'
 
 const upload = multer(uploadConfig)
 
-routes.get('/shops', ShopController.list)
+routes.get('/shops', ShopController.list) // ok
 routes.delete('/shops', ensureAuthenticared, ShopController.delete)
 routes.post('/shops', ShopController.create)
 routes.put('/shops/', ensureAuthenticared, ShopController.update)
