@@ -9,11 +9,11 @@ interface TokenPayload {
     sub: string
 }
 
-export default function ensureAuthenticated(req: Request, res:Response, next: NextFunction): void{
+export default function ensureAuthenticated(req: Request, res:Response, next: NextFunction): any{
     const authHeader = req.headers.authorization
 
     if(!authHeader){
-        throw new Error('JWT Token faltando')
+        return res.send(401).json('Nao foi recebido o TOKEN JWT.')
     }
 
     const [, token] = authHeader.split(' ')

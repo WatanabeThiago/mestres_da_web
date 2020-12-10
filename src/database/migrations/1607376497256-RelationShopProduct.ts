@@ -17,7 +17,7 @@ export class RelationShopProduct1607376497256 implements MigrationInterface {
             columnNames: ['shop_id'],
             referencedColumnNames: ['shop_id'],
             referencedTableName: 'shops',
-            onDelete: 'SET NULL',
+            onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
         }))
     }

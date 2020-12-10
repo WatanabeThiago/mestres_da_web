@@ -9,7 +9,7 @@ export class AddPhotoToProduct1607484778843 implements MigrationInterface {
             name: 'product_photo',
             type: 'varchar',
             isNullable: true,
-            default: 'blank.jpg'
+
         }))
     }
 

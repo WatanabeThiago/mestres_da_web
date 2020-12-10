@@ -19,11 +19,13 @@ class PhotoController {
 
         const product = await ProductRepo.findOne({ where: product_id })
 
-        if (shop_id == product?.shop_id)
+        if (shop_id == product?.shop_id){
             console.log('IGUAL')
-        else {
-            return res.status(401).json('unauthorized')
         }
+        else {
+            return res.sendStatus(401)
+        }
+        
         if (!product)
             return res.sendStatus(404)
 

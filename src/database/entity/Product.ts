@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn,CreateDateColumn, UpdateDateColumn  } from 'typeorm'
 
 import Shop from './Shop'
 
@@ -36,6 +36,12 @@ export default class Product {
 
     @Column({ default: 0 })
     product_quantity_42: number;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 
     @Column({default: 'blank.jpg'})
     product_photo: string;
