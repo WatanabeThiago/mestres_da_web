@@ -17,7 +17,7 @@ Após baixar o projeto e criar o banco de dados, rode o comando 'npm install' ou
 Para iniciliazar o projeto, rode 'yarn dev'.
 
 Se tudo acontecer como o esperado, voce irá ver esse log:
-<img src='./assets/print.png'>
+<img src='./assets/relations.png'>
 
 # 💭 Sobre o projeto
 
