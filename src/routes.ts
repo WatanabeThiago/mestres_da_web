@@ -20,7 +20,7 @@ routes.put('/shops/', ensureAuthenticared, ShopController.update)
 
 
 routes.get('/shops/products', ensureAuthenticared, ProductController.listProductsShops) 
-routes.get('/products/category',  ProductController.listCategory)
+routes.get('/products/category/:product_category', ensureAuthenticared, ProductController.listCategory)
 routes.post('/products', ensureAuthenticared, ProductController.create)
 routes.put('/products/:product_id', ensureAuthenticared, ProductController.update)
 routes.delete('/products/:product_id', ensureAuthenticared, ProductController.delete)

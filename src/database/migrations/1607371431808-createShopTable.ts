@@ -41,6 +41,8 @@ export class createShopTable1607371431808 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('shops')
+
     }
 
 }

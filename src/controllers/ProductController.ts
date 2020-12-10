@@ -11,9 +11,15 @@ class UserController {
     }
 
     async listCategory(req: Request, res: Response) {
-        const product_category = req.query.category
+        const product_category = req.query.product_category
         const shop_id = req.shop.shop_id
-        return res.json(await getRepository(Product).find({ where: { shop_id } && { product_category }}))
+
+        const data = {
+            product_category,
+            shop_id
+        }
+
+        return res.json(await getRepository(Product).find({where: data}))
     }
 
     async create(req: Request, res: Response) {

@@ -25,7 +25,7 @@ export class RelationShopProduct1607376497256 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey('products', 'ShopProducts')
 
-        await queryRunner.dropColumn('products', 'provide_id')
+        await queryRunner.dropColumn('products', 'shop_id')
     }
 
 }
