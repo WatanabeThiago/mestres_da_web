@@ -41,11 +41,6 @@ class SessionController {
             return res.status(400).json({ error: err.message })
         }
     }
-
-
-
-
-
 }
 
 export default new SessionController()
