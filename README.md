@@ -11,7 +11,7 @@
 
 
 # 🔧 Instalação do Projeto
-Crie um banco de dados com nome 'backend_watanabe' em algum container de sua preferencia.
+Crie um banco de dados POSTGRESQL com nome 'backend_watanabe' em algum container de sua preferencia.
 
 Após baixar o projeto e criar o banco de dados, rode o comando 'npm install' ou 'yarn'. Logo após, crie as tabelas com o comando 'yarn typeorm migration:run'
 Para iniciliazar o projeto, rode 'yarn dev'.
