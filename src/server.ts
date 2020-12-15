@@ -2,7 +2,7 @@ import express from 'express'
 import 'reflect-metadata'
 import cors from 'cors'
 import './database/connect'
-import routes from './routes'
+import routes from './routes/routes'
 
 
 const app = express()

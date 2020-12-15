@@ -2,21 +2,21 @@ import { Router } from 'express'
 import multer from 'multer'
 const routes = Router()
 
-import ShopController from './controllers/ShopController'
-import ProductController from './controllers/ProductController'
-import SessionController from  './controllers/SessionController'
-import ShopPhotoController from './controllers/ShopPhotoController'
-import ProductPhotoController from './controllers/ProductPhotoController'
+import ShopController from '../controllers/ShopController'
+import ProductController from '../controllers/ProductController'
+import SessionController from  '../controllers/SessionController'
+import ShopPhotoController from '../controllers/ShopPhotoController'
+import ProductPhotoController from '../controllers/ProductPhotoController'
 
-import ensureAuthenticared from './middlewares/ensureAuthenticated'
-import uploadConfig from './config/upload'
+import ensureAuthenticared from '../middlewares/ensureAuthenticated'
+import uploadConfig from '../config/upload'
 
 const upload = multer(uploadConfig)
 
-routes.get('/shops', ShopController.list) // ok
-routes.delete('/shops', ensureAuthenticared, ShopController.delete)
-routes.post('/shops', ShopController.create)
-routes.put('/shops/', ensureAuthenticared, ShopController.update)
+
+import shopRouter from './shops.routes'
+
+routes.use('/shops', shopRouter)
 
 
 routes.get('/shops/products', ensureAuthenticared, ProductController.listProductsShops) 
@@ -30,5 +30,8 @@ routes.patch('/shops/photo', ensureAuthenticared, upload.single('photo'), ShopPh
 routes.patch('/products/photo/:product_id', ensureAuthenticared, upload.single('product_photo'), ProductPhotoController.photo_update)
 
 routes.post('/login', SessionController.login)
+
+
+routes.post('/authenticate/facebook/')
 
 export default routes;
